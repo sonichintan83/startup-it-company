@@ -1,0 +1,202 @@
+<div class="contact-page">
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Get In Touch</h1>
+        <p class="hero-description">
+          Ready to start your next project? Let's discuss how we can help 
+          transform your business with innovative technology solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2 class="section-title">Contact Information</h2>
+          <p class="section-description">
+            We're here to help and answer any question you might have. 
+            We look forward to hearing from you.
+          </p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="contact-text">
+                <h3>Address</h3>
+                <p>123 Tech Street<br>Innovation City, IC 12345</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="contact-text">
+                <h3>Phone</h3>
+                <p>+1 (555) 123-4567</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="contact-text">
+                <h3>Email</h3>
+                <p>info&#64;techstart.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12,6 12,12 16,14"/>
+                </svg>
+              </div>
+              <div class="contact-text">
+                <h3>Business Hours</h3>
+                <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-container">
+          <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <h2 class="form-title">Send us a Message</h2>
+            
+            <div class="form-group">
+              <label for="name" class="form-label">Full Name *</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="form-input" 
+                [(ngModel)]="formData.name"
+                required
+                #name="ngModel"
+                [class.error]="name.invalid && name.touched"
+              >
+              <div class="error-message" *ngIf="name.invalid && name.touched">
+                Name is required
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address *</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-input" 
+                [(ngModel)]="formData.email"
+                required
+                email
+                #email="ngModel"
+                [class.error]="email.invalid && email.touched"
+              >
+              <div class="error-message" *ngIf="email.invalid && email.touched">
+                <span *ngIf="email.errors?.['required']">Email is required</span>
+                <span *ngIf="email.errors?.['email']">Please enter a valid email</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="company" class="form-label">Company</label>
+              <input 
+                type="text" 
+                id="company" 
+                name="company" 
+                class="form-input" 
+                [(ngModel)]="formData.company"
+              >
+            </div>
+            
+            <div class="form-group">
+              <label for="service" class="form-label">Service Interested In</label>
+              <select 
+                id="service" 
+                name="service" 
+                class="form-select" 
+                [(ngModel)]="formData.service"
+              >
+                <option value="">Select a service</option>
+                <option value="web-development">Web Development</option>
+                <option value="mobile-apps">Mobile App Development</option>
+                <option value="cloud-solutions">Cloud Solutions</option>
+                <option value="consulting">IT Consulting</option>
+                <option value="ecommerce">E-commerce Solutions</option>
+                <option value="cybersecurity">Cybersecurity</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="budget" class="form-label">Project Budget</label>
+              <select 
+                id="budget" 
+                name="budget" 
+                class="form-select" 
+                [(ngModel)]="formData.budget"
+              >
+                <option value="">Select budget range</option>
+                <option value="under-5k">Under $5,000</option>
+                <option value="5k-10k">$5,000 - $10,000</option>
+                <option value="10k-25k">$10,000 - $25,000</option>
+                <option value="25k-50k">$25,000 - $50,000</option>
+                <option value="over-50k">Over $50,000</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message *</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="form-textarea" 
+                rows="5"
+                [(ngModel)]="formData.message"
+                required
+                #message="ngModel"
+                [class.error]="message.invalid && message.touched"
+                placeholder="Tell us about your project requirements..."
+              ></textarea>
+              <div class="error-message" *ngIf="message.invalid && message.touched">
+                Message is required
+              </div>
+            </div>
+            
+            <button 
+              type="submit" 
+              class="btn btn-primary btn-large"
+              [disabled]="contactForm.invalid || isSubmitting"
+            >
+              <span *ngIf="!isSubmitting">Send Message</span>
+              <span *ngIf="isSubmitting">Sending...</span>
+            </button>
+            
+            <div class="success-message" *ngIf="isSubmitted">
+              Thank you for your message! We'll get back to you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
